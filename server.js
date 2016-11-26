@@ -10,6 +10,7 @@ var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
 var localhost = 'http://localhost:8081/';
 var access_token;
+var user_image;
 
 var app = express();
 app.use(express.static(__dirname + '/public'))
@@ -44,7 +45,16 @@ app.get('/user', function(req, res) {
   };
   request.get(options, function(error, response, body) {
     access_token = req.query.access_token;
+    user_name = body.display_name;
+    user_image = body.images[0].url;
     res.redirect('/choice.html');
+  });
+});
+
+app.get('/user_info', function(req, res) {
+  res.send({
+    'user_name': user_name,
+    'user_image': user_image
   });
 });
 

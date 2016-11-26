@@ -4,6 +4,7 @@
 let canvas = document.createElement('canvas');
 let context = canvas.getContext('2d');
 let img = document.getElementById('main-image');
+// console.log(img);
 
 //context.drawImage(img, 0, 0);
 let pixels = getPixels(img, context);
@@ -130,6 +131,7 @@ function gotoRecommendation(intensity, brightness, saturation) {
         response.json().then(function(data) {
           console.log(data);
           document.getElementById("thumb").src = data.image;
+          document.getElementById("song").innerHTML = data.artist + ' - ' + data.name;
           playSong(data.preview);
           track = data;
         });
