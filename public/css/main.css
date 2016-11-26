@@ -41,7 +41,7 @@
     font-weight: bold;
     border-style: solid;
     border-width: 2px;
-    border-color: #FDFFFC; 
+    border-color: #FDFFFC;
     margin-bottom:40px;
     font-family: 'Roboto', sans-serif;
 }
@@ -60,7 +60,7 @@
     font-weight: bold;
     border-style: solid;
     border-width: 2px;
-    border-color: #FDFFFC; 
+    border-color: #FDFFFC;
     margin-left: 20px;
     margin-right:14px;
 }
@@ -98,11 +98,11 @@
     font-weight: bold;
     border-style: solid;
     border-width: 2px;
-    border-color: #FDFFFC; 
-    margin-left: 20px;	
+    border-color: #FDFFFC;
+    margin-left: 20px;
     width:200px;
-    height:200px; 
-    margin-top:40px;  
+    height:200px;
+    margin-top:40px;
 }
 
 #instagram_choice{
@@ -162,7 +162,7 @@ h1 {
   text-align: center;
   font-family: 'Ranga', cursive;
   font-size: 40px;
-  margin-bottom: 10px;  
+  margin-bottom: 10px;
   margin-top: 0px;
 }
 
@@ -280,7 +280,7 @@ html, body {height: 100%;}
   border-color:#45C26E;
   position: fixed;
   bottom: 0;
-  width: 100%;  
+  width: 100%;
 }
 
 #song_bar p{
@@ -298,7 +298,11 @@ html, body {height: 100%;}
 
 #spotify_container{
 	/*margin: 10px;*/
-  	font-family: 'Ranga', cursive;	
+  	font-family: 'Ranga', cursive;
+}
+
+#upload_file {
+  display: none;
 }
 
 /*Choice*/
