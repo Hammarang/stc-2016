@@ -146,7 +146,6 @@ app.get('/recommendations', function(req, res) {
           'Authorization': 'Bearer ' + access_token
       }
   };
-  console.log("Fetching top tracks");
   var seed = "";
   request.get(topTracksOptions, function(error, response, body) {
     var info = JSON.parse(body);
