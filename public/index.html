@@ -12,19 +12,46 @@
 
   <title>Spotify Tech Challenge - 2016 Demo</title>
 </head>
+<script>
+  window.onload = function() {
+      let gotoPage = window.location.origin + "/user_info";
+
+      fetch(gotoPage)
+        .then(
+          function(response) {
+            if (response.status !== 200) {
+              console.log('Looks like there was a problem. Status Code: ' +
+                response.status);
+              return;
+            }
+
+            // Examine the text in the response
+            response.json().then(function(data) {
+              console.log(data);
+              document.getElementById("profile_pic").src = data.user_image;
+              document.getElementById("user_name").innerHTML = data.user_name;
+            });
+          }
+        )
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        });
+  }
+</script>
+
 <body>
 	<div id="header">
-		<div id="title">
-		</div>
-		<div id="profile_pic">
+		<div id="title"></div>
+    <div>
+      <img id="profile_pic" />
+      <p id="user_name" />
 		</div>
     <a href="">
-      <a href="../public/choice.html">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-      </a>
-      <div id="sign_out_btn">
-      </div>
-    </div>
+    <a href="choice.html">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    <div id="sign_out_btn"></div>
+  </div>
 
     <div id="like">
      <button id="like_btn"><i class="fa fa-heart" aria-hidden="true"></i></button>
