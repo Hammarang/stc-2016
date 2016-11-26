@@ -51,8 +51,10 @@ document.getElementById('hashtag_btn').onclick = function() {
     var fr = new FileReader();
     fr.onload = function () {
         img.src = fr.result;
-        let features = analyzeImage(getDominantPalette(img));
-        gotoRecommendation(features.intensity, features.brightness, features.saturation)
+        let dominantPalette = getDominantPalette(img);
+        let features = analyzeImage(dominantPalette);
+        setUIPalette(dominantPalette);
+        gotoRecommendation(features.intensity, features.brightness, features.saturation);
     }
     fr.readAsDataURL(fileList[0]);
     }
@@ -67,6 +69,25 @@ function analyzeImage(dominantPalette) {
     brightness: getBrightness(dominantPalette),
     saturation: getSaturation(dominantPalette),
   }
+}
+
+function setUIPalette(palette) {
+  let firstDominant = rgbToStr(palette[0]);
+  let secondDominant = rgbToStr(palette[1]);
+
+  document.body.style.background = firstDominant;
+  document.body.style.backgroundImage = '-moz-linear-gradient('
+        + "right" + ', ' + firstDominant + ', ' + secondDominant + ')';
+  document.body.style.backgroundImage = '-webkit-linear-gradient('
+        + "left" + ', ' + firstDominant + ', ' + secondDominant + ')';
+  document.body.style.backgroundImage = 'linear-gradient('
+        + "to right" + ', ' + firstDominant + ', ' + secondDominant + ')';
+  document.body.style.backgroundImage = '-o-linear-gradient('
+        + "right" + ', ' + firstDominant + ', ' + secondDominant + ')';
+}
+
+function rgbToStr(color) {
+  return "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
 }
 
 // Goto the recommendations page with the calculated parameters
