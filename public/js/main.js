@@ -41,6 +41,34 @@ console.log(saturation);
 
 gotoRecommendation(intensity, brightness, saturation);
 
+// Setup file uploading, reanalyzing the image after it is uploaded
+document.getElementById('hashtag_btn').onclick = function() {
+  let fileUploader = document.getElementById('upload_file');
+  fileUploader.onchange = function(event) {
+    let fileList = fileUploader.files;
+
+    if (FileReader && fileList && fileList.length) {
+    var fr = new FileReader();
+    fr.onload = function () {
+        img.src = fr.result;
+        let features = analyzeImage(getDominantPalette(img));
+        gotoRecommendation(features.intensity, features.brightness, features.saturation)
+    }
+    fr.readAsDataURL(fileList[0]);
+    }
+  }
+  // Open file uploader
+  fileUploader.click();
+}
+
+function analyzeImage(dominantPalette) {
+  return {
+    intensity: getPaletteIntensity(dominantPalette),
+    brightness: getBrightness(dominantPalette),
+    saturation: getSaturation(dominantPalette),
+  }
+}
+
 // Goto the recommendations page with the calculated parameters
 function gotoRecommendation(intensity, brightness, saturation) {
   let valence = intensity;
