@@ -17,7 +17,7 @@
 	margin-right: auto;
 	margin-left: auto;
 	width:190px;
-	margin-top:40px;
+	margin-top:10px;
 	font-family: sans-serif;
 }
 
@@ -27,8 +27,8 @@ h1 {
   text-align: center;
   font-family: 'Ranga', cursive;
   font-size: 60px;
-  margin-top: 100px;
-  margin-bottom: 20px;  
+  margin-top: 40px;
+  margin-bottom: 10px;  
 }
 
 h2{
@@ -40,13 +40,14 @@ h2{
 body{
 	margin:0;
 	background: #292F36; /* For browsers that do not support gradients */
-	/*background: -webkit-linear-gradient(left, #4568DC , #B06AB3); *//* For Safari 5.1 to 6.0 */
-	/*background: -o-linear-gradient(right, #4568DC, #B06AB3);*/ /* For Opera 11.1 to 12.0 */
-	/*background: -moz-linear-gradient(right, #4568DC, #B06AB3);*/ /* For Firefox 3.6 to 15 */
-	/*background: linear-gradient(to right, #4568DC, #B06AB3);*/ /* Standard syntax */
+	background: -webkit-linear-gradient(left, #4568DC , #B06AB3); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #4568DC, #B06AB3); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #4568DC, #B06AB3); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #4568DC, #B06AB3); /* Standard syntax */
 }
 
 /*Images*/
+/*
 .img{
     width: 400px;
 	height: 400px;
@@ -56,14 +57,30 @@ body{
 	background: url(../images/test.jpeg) no-repeat;
 	margin-left: auto;
 	margin-right: auto;
+}*/
+
+.img{
+  display: inline-block;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:30px;
 }
 
-#img_choice_container{
-    width: 400px;
-	height: 900px;
-	margin-left: auto;
-	margin-right: auto;
+#img_container{
+  width:400px;
+  margin-right: auto;
+  margin-left: auto;
+  /*display:none;*/
+}
 
+#login_container{
+  width:400px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #profile_pic{
@@ -92,8 +109,8 @@ body{
 #header{
 	width:100%;
 	overflow: hidden;
-	background-color:#45C26E;
-	margin-bottom: 40px;
+	background-color:none;
+	margin-bottom: 0px;
 }
 
 #title{
