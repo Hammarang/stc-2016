@@ -9,6 +9,7 @@ var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
 var localhost = 'http://localhost:8081/';
+var access_token;
 
 var app = express();
 app.use(express.static(__dirname + '/public'))
@@ -42,9 +43,8 @@ app.get('/user', function(req, res) {
     json: true
   };
   request.get(options, function(error, response, body) {
-    res.end(JSON.stringify({'body': body.id,
-      'access_token': req.query.access_token,
-      'url': localhost + body.id + '/playlist?access_token=' + req.query.access_token}));
+    access_token = req.query.access_token;
+    res.redirect('/choice.html');
   });
 });
 
@@ -54,7 +54,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-library-modify';
+  var scope = 'user-read-private user-library-modify user-top-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -68,7 +68,6 @@ app.get('/login', function(req, res) {
 app.get('/callback', function(req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
-  console.log(res);
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -128,9 +127,86 @@ app.get('/refresh_token', function(req, res) {
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
+      console.log("Got access token: " + access_token);
       res.send({
         'access_token': access_token
       });
     }
+  });
+});
+
+app.get('/recommendations', function(req, res) {
+  var selectedTrack;
+  var topTracksUrl = 'https://api.spotify.com/v1/me/top/tracks?limit=5';
+  var topTracksOptions = {
+      uri: topTracksUrl,
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + access_token
+      }
+  };
+  console.log("Fetching top tracks");
+  var seed = "";
+  request.get(topTracksOptions, function(error, response, body) {
+    var info = JSON.parse(body);
+    if (!error && response.statusCode == 200) {
+      for (var i = 0; i < info.items.length; i++) {
+        console.log(info.items[i].id);
+        seed = seed + info.items[i].id + ",";
+      }
+      seed = seed.slice(0, seed.length - 1);
+    } else {
+      console.log("Got error:");
+      console.log(error);
+    }
+    console.log("------- SEEDS -----------");
+    console.log(seed);
+    console.log("------- END SEEDS -----------");
+
+    var recommendationsUrl = 'https://api.spotify.com/v1/recommendations?' +
+      querystring.stringify({
+        seed_tracks: seed,
+        target_valence: req.query.valence,
+        target_energy: req.query.brightness,
+        limit: 1
+      });
+    var recommendationsOptions = {
+        uri: recommendationsUrl,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+        }
+    };
+    var trackIds = [];
+    request.get(recommendationsOptions, function(error, response, body) {
+      var info = JSON.parse(body);
+      if (!error && response.statusCode == 200) {
+        for (var i = 0; i < info.tracks.length; i++) {
+          trackIds.push(info.tracks[i].id);
+        }
+      } else {
+        console.log("Got error:");
+        console.log(error);
+      }
+      console.log("------- TRACKS -----------");
+      console.log(trackIds);
+      console.log("------- END TRACKS -----------");
+
+      var trackUrl = 'https://api.spotify.com/v1/tracks/' + trackIds[0];
+      var trackOptions = {
+          uri: trackUrl,
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + access_token
+          }
+      };
+      request.get(trackOptions, function(error, response, body) {
+        var info = JSON.parse(body);
+        res.send(info);
+      });
+    });
   });
 });
