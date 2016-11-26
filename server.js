@@ -7,6 +7,8 @@ var request = require('request');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
+var fs = require('fs');
+var https = require('https');
 var stateKey = 'spotify_auth_state';
 var localhost = 'http://localhost:8081/';
 var access_token;
@@ -20,11 +22,21 @@ app.use(function(req, res, next) {
   next();
 });
 
-var server = app.listen(8081, function () {
+var serverOptions = {
+  key: fs.readFileSync('client-key.pem'),
+  cert: fs.readFileSync('client-cert.pem')
+};
+
+// var server = app.listen(8081, function () {
+var server = https.createServer(serverOptions, function (req, res) {
+  console.log("Starting server");
+  // res.writeHead(200);
+  // res.end("Starting Server\n");
+}).listen(8081, function() {
   var host = server.address().address
   var port = server.address().port
   console.log("Example app listening at http://%s:%s", host, port)
-})
+});
 
 // Login code below stolen from https://github.com/spotify/web-api-auth-examples
 var generateRandomString = function(length) {
