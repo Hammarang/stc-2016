@@ -145,6 +145,30 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
+app.get('/star', function(req, res) {
+  saveTracksUrl = 'https://api.spotify.com/v1/me/tracks?ids=';
+  saveTracksUrl += req.query.id;
+  var starOptions = {
+      url: saveTracksUrl,
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + access_token
+      },
+  };
+  console.log(starOptions);
+
+  request.put(starOptions, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      console.log("Saved song ok!");
+    } else {
+      console.log("ERROR: " + error)
+      console.log(response);
+      console.log(body);
+    }
+  });
+});
+
 app.get('/recommendations', function(req, res) {
   var selectedTrack;
   var topTracksUrl = 'https://api.spotify.com/v1/me/top/tracks?limit=5';
