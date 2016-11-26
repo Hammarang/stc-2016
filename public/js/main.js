@@ -40,6 +40,18 @@ let saturation = getSaturation(dominantPalette);
 
 gotoRecommendation(intensity, brightness, saturation);
 
+document.getElementById('like_btn').onclick = function() {
+  if(track) {
+    let starPush = window.location.origin + "/star";
+    starPush += "?id=" + track.id;
+    console.log(starPush);
+    fetch(starPush)
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+  }
+}
+
 // Setup file uploading, reanalyzing the image after it is uploaded
 document.getElementById('hashtag_btn').onclick = function() {
   let fileUploader = document.getElementById('upload_file');
