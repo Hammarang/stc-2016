@@ -1,6 +1,6 @@
 /*Buttons*/
 #login_btn{
-    background-color: #4BD578; /* Green */
+    background-color: #45C26E; /* Green */
     border: none;
     color:#FDFFFC;
     padding: 10px 32px;
@@ -19,6 +19,7 @@
 	width:190px;
 	margin-top:10px;
 	font-family: sans-serif;
+	transition: all 0.3s ease 0s;
 }
 
 /*Headers*/
