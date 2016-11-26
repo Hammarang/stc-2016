@@ -35,18 +35,18 @@
     background-color: #292F36; /* Green */
     border: none;
     color:#FDFFFC;
-    padding: 10px 10px;
-    text-align: center;
+    padding: 10px 12px;
+    float:right;
     text-decoration: none;
-    display: inline-block;
     font-size: 14px;
     /*float:right;*/
-    border-radius:30px;
+    border-radius:50%;
     font-weight: bold;
     border-style: solid;
     border-width: 2px;
     border-color: #FDFFFC; 
     margin-left: 20px;
+    margin-right:14px;
 }
 
 #like_btn i{
@@ -62,7 +62,7 @@
 	overflow: hidden;
 	margin-right: auto;
 	margin-left: auto;
-	width:162px;
+	width:250px;
 	margin-top:40px;
 	font-family: sans-serif;
   text-align: center;
@@ -106,11 +106,36 @@ i{
 	padding-left: 6px;
 }
 
+#like{
+  overflow: hidden;
+}
+
+/*Audio*/
+audio{
+  display:inline-block;
+  float:left;
+  width:85%;
+  margin-top:25px;
+  margin-left:10px;
+  background-color: #95B9C7;
+}
+
 #img_choice_container{
   margin-top:120px;
 	width:600px;
 	margin-right: auto;
 	margin-left:auto;
+}
+
+#thumb{
+  display:inline-block;
+  float:left;
+  margin-left: 10px;
+  padding-top: 10px;
+}
+
+#thumb img{
+  border-radius: 50%;
 }
 
 /*Headers*/
@@ -221,15 +246,16 @@ html, body {height: 100%;}
   border-color:#45C26E;*/
 }
 
-#title{
-	text-align: left;
+#title h1{
+	/*text-align: left;*/
+  text-align: center;
 }
 
 /*Song bar*/
 #song_bar{
 	width:100%;
 	overflow: hidden;
-	background-color: #292F36;
+	background-color: #FDFFFC;
 	margin-top: 40px;
   border-top-style: solid;
   border-top-width: 5px;
