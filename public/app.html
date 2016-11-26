@@ -9,6 +9,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lobster|Ranga|Roboto|Tillana" rel="stylesheet">
   <script src="https://use.fontawesome.com/e85b70dd82.js"></script>
+
   <title>Spotify Tech Challenge - 2016 Demo</title>
 </head>
 <script>
@@ -37,39 +38,68 @@
         });
   }
 </script>
+
 <body>
 	<div id="header">
-		<div>
+		<div id="title"></div>
+    <div>
       <img id="profile_pic" />
       <p id="user_name" />
 		</div>
-		<div id="sign_out_btn">
-		</div>
-	</div>
+    <a href="">
+    <a href="choice.html">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    <div id="sign_out_btn"></div>
+  </div>
 
-	  <div id="title">
+    <div id="like">
+     <button id="like_btn"><i class="fa fa-heart" aria-hidden="true"></i></button>
     </div>
 
-    <div id="img_choice_container">
-   		<div class="img_choice">
-   		</div>
-      <div id="instagram_choice">
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-      </div>
-      <a href="app.html">
-        <div id="upload_choice">
-          <i class="fa fa-upload" aria-hidden="true"></i>
-        </div>
-      </a>
+    </br>
+    </br>
 
-   		<div id="choice_desc">
-        <!-- <p>Upload an image from your device, or use photos from your instagram account!</p> -->
+    <div id="title">
+      <h1 id="song"></h1>
+    <div id="img_container">
+   		<div class="img">
+        <img id="main-image" src="images/uni.jpg"></img>
+   		</div>
+   		<div id="img_btns">
+   			<button id="hashtag_btn">UPLOAD
+          <i class="fa fa-upload" aria-hidden="true"></i>
+        </button>
+        <input id="upload_file" type="file" name="upload_file">
    		</div>
    		<div id="info">
    		</div>
     </div>
 
+    <div id="song_bar">
+	    <div id="spotify_container">
+	    	<div id="spotify_logo">
+	    		<img src="images/spotify_logo.png"></img>
+	    	</div>
+        <div id="thumb_pic">
+          <img id="thumb"/>
+        </div>
+	    	<div id="song">
+          <audio id="player" controls>
+            <source src="From Json" type="audio/mpeg" />
+          </audio>
+	    	</div>
+	   	</div>
+    </div>
+    <div id="info">
+    </div>
+  </div>
+  
+</div>
+</div>
+
 </body>
 <script src="lib/color-thief.min.js" charset="utf-8"></script>
+<script src="lib/tiny-color.js" charset="utf-8"></script>
 <script src="js/main.js" charset="utf-8"></script>
 </html>
