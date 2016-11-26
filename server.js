@@ -151,13 +151,13 @@ app.get('/recommendations', function(req, res) {
     var info = JSON.parse(body);
     if (!error && response.statusCode == 200) {
       for (var i = 0; i < info.items.length; i++) {
-        console.log(info.items[i].id);
         seed = seed + info.items[i].id + ",";
       }
       seed = seed.slice(0, seed.length - 1);
     } else {
       console.log("Got error:");
       console.log(error);
+      console.log(response.statusCode);
     }
     console.log("------- SEEDS -----------");
     console.log(seed);
@@ -167,7 +167,7 @@ app.get('/recommendations', function(req, res) {
       querystring.stringify({
         seed_tracks: seed,
         target_valence: req.query.valence,
-        target_energy: req.query.brightness,
+        target_energy: req.query.energy,
         limit: 1
       });
     var recommendationsOptions = {
@@ -188,6 +188,7 @@ app.get('/recommendations', function(req, res) {
       } else {
         console.log("Got error:");
         console.log(error);
+        console.log(response);
       }
       console.log("------- TRACKS -----------");
       console.log(trackIds);
@@ -204,7 +205,16 @@ app.get('/recommendations', function(req, res) {
       };
       request.get(trackOptions, function(error, response, body) {
         var info = JSON.parse(body);
-        res.send(info);
+        var shouldReturn = {
+          id: info.id,
+          name: info.name,
+          artist: info.artists[0].name,
+          preview: info.preview_url,
+          image: info.album.images[2].url
+        }
+        console.log("returning shit");
+        console.log(shouldReturn);
+        res.send(shouldReturn);
       });
     });
   });

@@ -4,7 +4,6 @@
 let canvas = document.createElement('canvas');
 let context = canvas.getContext('2d');
 let img = document.getElementById('main-image');
-console.log(img);
 
 //context.drawImage(img, 0, 0);
 let pixels = getPixels(img, context);
@@ -13,31 +12,31 @@ let colorThief = new ColorThief();
 let dominantColor = getDominantColor(img);
 let dominantPalette = getDominantPalette(img);
 
-console.log("Dominant Color:");
-console.log(dominantColor);
-console.log("Dominant Palette:");
-console.log(dominantPalette);
+// console.log("Dominant Color:");
+// console.log(dominantColor);
+// console.log("Dominant Palette:");
+// console.log(dominantPalette);
 
 // Print 10 first pixels
-console.log(pixels.slice(0, 10));
+// console.log(pixels.slice(0, 10));
 
 // Get intensity
 let intensity = getPaletteIntensity(dominantPalette)
 
-console.log("Intensity of dominant palette")
-console.log(intensity);
+// console.log("Intensity of dominant palette")
+// console.log(intensity);
 
-console.log("Constrast of dominant palette");
+// console.log("Constrast of dominant palette");
 let contrast = getPaletteContrast(dominantPalette);
-console.log(contrast);
+// console.log(contrast);
 
-console.log("Brightness of image");
+// console.log("Brightness of image");
 let brightness = getBrightness(dominantPalette);
-console.log(brightness);
+// console.log(brightness);
 
-console.log("Saturation of image");
+// console.log("Saturation of image");
 let saturation = getSaturation(dominantPalette);
-console.log(saturation);
+// console.log(saturation);
 
 gotoRecommendation(intensity, brightness, saturation);
 
@@ -69,6 +68,7 @@ function analyzeImage(dominantPalette) {
   }
 }
 
+var track;
 // Goto the recommendations page with the calculated parameters
 function gotoRecommendation(intensity, brightness, saturation) {
   let valence = intensity;
@@ -78,18 +78,32 @@ function gotoRecommendation(intensity, brightness, saturation) {
   if (energy > 1) {
     energy = 1;
   }
-  let gotoPage = window.location.href + "recommendations";
+  let gotoPage = window.location.origin + "/recommendations";
   gotoPage += "?valence=" + valence;
   gotoPage += "&energy=" + energy;
   console.log(gotoPage);
 
-  var opts = {
-  method: 'GET',
-  headers: {}
-  };
-  fetch(gotoPage, opts).then(function (response) {
-    console.log(response);
-  });
+  fetch(gotoPage)
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+
+        // Examine the text in the response
+        response.json().then(function(data) {
+          console.log(data);
+          document.getElementById("thumb").src = data.image;
+          playSong(data.preview);
+          track = data;
+        });
+      }
+    )
+    .catch(function(err) {
+      console.log('Fetch Error :-S', err);
+    });
 }
 
 // Calculates "contrast" in relation to most dominant color
