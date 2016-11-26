@@ -24,7 +24,7 @@ function getPixels(image, context) {
 
   for (var offsetX = 0; offsetX < image.width; offsetX++) {
     for (var offsetY = 0; offsetY < image.height; offsetY++) {
-      pixels.push(context.getImageData(offsetX, offsetY, 1, 1));
+      pixels.push(context.getImageData(offsetX, offsetY, 1, 1).data);
     }
   }
   return pixels;
