@@ -127,7 +127,14 @@ h2{
 
 #header i{
 	margin:10px;
-    line-height: 2.6;
+  line-height: 2.6;
+}
+
+#welcome{
+  margin:10px;
+  line-height: 2.6;
+  color: #FDFFFC;
+  font-family: 'Roboto', sans-serif;
 }
 
 /*body*/
