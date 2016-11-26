@@ -230,9 +230,12 @@ html, body {height: 100%;}
 	overflow: hidden;
 	background-color: #292F36;
 	margin-top: 40px;
-    border-top-style: solid;
-    border-top-width: 5px;
-    border-color:#45C26E;
+  border-top-style: solid;
+  border-top-width: 5px;
+  border-color:#45C26E;
+  position: fixed;
+  bottom: 0;
+  width: 100%;  
 }
 
 #song_bar p{
