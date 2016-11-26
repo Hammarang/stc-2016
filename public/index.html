@@ -19,23 +19,28 @@
 		<div id="profile_pic">
 		</div>
     <a href="">
-    <a href="../public/choice.html">
-      <i class="fa fa-arrow-left" aria-hidden="true"></i>
-    </a>
-		<div id="sign_out_btn">
-		</div>
-	</div>
-
-	<div id="title">
-  		<h1>Unicorn madness!</h1>
+      <a href="../public/choice.html">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </a>
+      <div id="sign_out_btn">
+      </div>
     </div>
 
+    <div id="like">
+     <button id="like_btn"><i class="fa fa-heart" aria-hidden="true"></i></button>
+    </div>
+
+    </br>
+    </br>
+
+    <div id="title">
+      <h1>Unicorn madness!</h1>
     <div id="img_container">
    		<div class="img">
         <img id="main-image" src="images/uni.jpg"></img>
    		</div>
    		<div id="img_btns">
-   			<button id="hashtag_btn" onclick="playSong('https://p.scdn.co/mp3-preview/d5b6e7b1d0dd9e9bb3ddf05ce36cf0dd8fb53ef9')">UPLOAD
+   			<button id="hashtag_btn">UPLOAD
           <i class="fa fa-upload" aria-hidden="true"></i>
         </button>
         <input id="upload_file" type="file" name="upload_file">
@@ -49,18 +54,22 @@
 	    	<div id="spotify_logo">
 	    		<img src="images/spotify_logo.png"></img>
 	    	</div>
-        <div id="thumb">
-          <img src="https://i.scdn.co/image/13a53d6f5e8530fa9974ffb7708a4137ace8aac1" />
+        <div>
+          <img id="thumb"/>
         </div>
 	    	<div id="song">
-                <button id="like_btn"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                <audio id="player" controls>
-                  <source src="From Json" type="audio/mpeg" />
-                </audio>
+          <audio id="player" controls>
+            <source src="From Json" type="audio/mpeg" />
+          </audio>
 	    		<p>Song - Artist</p>
 	    	</div>
 	   	</div>
     </div>
+    <div id="info">
+    </div>
+  </div>
+</div>
+</div>
 
 </body>
 <script src="lib/color-thief.min.js" charset="utf-8"></script>
