@@ -5,7 +5,6 @@ var redirect_uri = 'http://localhost:8081/callback'; // Your redirect uri
 
 var request = require('request');
 var express = require('express');
-var html = require('html');
 var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
@@ -55,7 +54,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-library-modify';
+  var scope = 'user-read-private user-library-modify';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
