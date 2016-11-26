@@ -66,7 +66,6 @@ function getBrightness(palette) {
   /palette.length
 }
 
-// Calculates the average saturation of the palette
 function getSaturation(palette) {
   return palette
     .map(color => {
