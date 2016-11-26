@@ -56,8 +56,14 @@ function gotoRecommendation(intensity, brightness, saturation) {
   gotoPage += "?valence=" + valence;
   gotoPage += "&energy=" + energy;
   console.log(gotoPage);
-  window.location.href = gotoPage;
 
+  var opts = {
+  method: 'GET',
+  headers: {}
+  };
+  fetch(gotoPage, opts).then(function (response) {
+    console.log(response);
+  });
 }
 
 // Calculates "contrast" in relation to most dominant color
