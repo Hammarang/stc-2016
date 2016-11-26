@@ -15,8 +15,39 @@ console.log("Dominant Color:");
 console.log(dominantColor);
 console.log("Dominant Palette:");
 console.log(dominantPalette);
+
 // Print 10 first pixels
 console.log(pixels.slice(0, 10));
+
+// Get intensity
+let intensity = getPaletteIntensity(dominantPalette)
+
+console.log("Intensity of dominant palette")
+console.log(intensity);
+
+// Gets the intensity of a palette of colors. The intensity being the V-values
+// in HSV form
+function getPaletteIntensity(palette) {
+  return palette
+    .map(color => {
+      return rgbToHsv(color).v
+    })
+    .reduce((sum, val) => {
+      return sum + val
+    })
+  /palette.length;
+}
+
+// Convert an array of RGB values to HSV
+function rgbToHsv(pixel) {
+  return tinycolor(
+    {
+      r: pixel[0],
+      b: pixel[1],
+      g: pixel[2],
+    }
+  ).toHsv();
+}
 
 // Returns an array of pixels, RGBA
 function getPixels(image, context) {
