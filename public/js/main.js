@@ -41,6 +41,31 @@ console.log("Saturation of image");
 let saturation = getSaturation(dominantPalette);
 console.log(saturation);
 
+gotoRecommendation(intensity, brightness, saturation);
+
+// Goto the recommendations page with the calculated parameters
+function gotoRecommendation(intensity, brightness, saturation) {
+  let valence = intensity;
+  let energy = brightness + saturation;
+
+  // Cap energy for Spotify API
+  if (energy > 1) {
+    energy = 1;
+  }
+  let gotoPage = window.location.href + "recommendations";
+  gotoPage += "?valence=" + valence;
+  gotoPage += "&energy=" + energy;
+  console.log(gotoPage);
+
+  var opts = {
+  method: 'GET',
+  headers: {}
+  };
+  fetch(gotoPage, opts).then(function (response) {
+    console.log(response);
+  });
+}
+
 // Calculates "contrast" in relation to most dominant color
 function getPaletteContrast(palette) {
   let lightnessPalette = palette.map(color => {

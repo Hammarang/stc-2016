@@ -65,6 +65,7 @@
 	width:162px;
 	margin-top:40px;
 	font-family: sans-serif;
+  text-align: center;
 }
 
 #instagram_choice, #upload_choice{
@@ -106,6 +107,7 @@ i{
 }
 
 #img_choice_container{
+  margin-top:120px;
 	width:600px;
 	margin-right: auto;
 	margin-left:auto;
@@ -116,8 +118,9 @@ h1 {
   color: #FDFFFC;
   text-align: center;
   font-family: 'Ranga', cursive;
-  font-size: 60px;
-  margin-bottom: 20px;  
+  font-size: 40px;
+  margin-bottom: 10px;  
+  margin-top: 0px;
 }
 
 h2{
@@ -128,6 +131,7 @@ h2{
 #header i{
 	margin:10px;
   line-height: 2.6;
+  font-size: 20px;
 }
 
 #welcome{
@@ -141,11 +145,12 @@ h2{
 body{
 	margin:0;
 	background: #3C4148; /* For browsers that do not support gradients */
-	/*background: -webkit-linear-gradient(left, #4568DC , #B06AB3); *//* For Safari 5.1 to 6.0 */
-	/*background: -o-linear-gradient(right, #4568DC, #B06AB3);*/ /* For Opera 11.1 to 12.0 */
-	/*background: -moz-linear-gradient(right, #4568DC, #B06AB3);*/ /* For Firefox 3.6 to 15 */
-	/*background: linear-gradient(to right, #4568DC, #B06AB3);*/ /* Standard syntax */
+  background: -webkit-linear-gradient(left, #4568DC , #B06AB3); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #4568DC, #B06AB3); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #4568DC, #B06AB3); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #4568DC, #B06AB3); /* Standard syntax */
 }
+
 html, body {height: 100%;}
 
 /*Images*/
@@ -208,11 +213,11 @@ html, body {height: 100%;}
 #header{
 	width:100%;
 	overflow: hidden;
-	background-color:#292F36;;
-	margin-bottom: 60px;
-	border-bottom-style: solid;
-    border-bottom-width: 5px;
-    border-color:#45C26E;
+	background-color:none;
+	margin-bottom: 0px;
+	/*border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-color:#45C26E;*/
 }
 
 #title{
@@ -225,9 +230,12 @@ html, body {height: 100%;}
 	overflow: hidden;
 	background-color: #292F36;
 	margin-top: 40px;
-    border-top-style: solid;
-    border-top-width: 5px;
-    border-color:#45C26E;
+  border-top-style: solid;
+  border-top-width: 5px;
+  border-color:#45C26E;
+  position: fixed;
+  bottom: 0;
+  width: 100%;  
 }
 
 #song_bar p{
