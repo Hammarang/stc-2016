@@ -1,6 +1,6 @@
 /*Buttons*/
-#upload_btn{
-    background-color: #292F36; /* Green */
+#login_btn{
+    background-color: #4BD578; /* Green */
     border: none;
     color:#FDFFFC;
     padding: 10px 32px;
@@ -12,35 +12,13 @@
     font-weight: bold;
 }
 
-#hashtag_btn{
-    background-color: #292F36; /* Green */
-    border: none;
-    color:#FDFFFC;
-    padding: 10px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    /*float:right;*/
-    border-radius:30px;
-    font-weight: bold;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #FDFFFC; 
-}
-
-#img_btns{
+#login_btns{
 	overflow: hidden;
 	margin-right: auto;
 	margin-left: auto;
-	width:159px;
+	width:190px;
 	margin-top:40px;
 	font-family: sans-serif;
-}
-
-/*Icons*/
-i{
-	padding-left: 6px;
 }
 
 /*Headers*/
@@ -49,6 +27,7 @@ h1 {
   text-align: center;
   font-family: 'Ranga', cursive;
   font-size: 60px;
+  margin-top: 100px;
   margin-bottom: 20px;  
 }
 
@@ -60,7 +39,7 @@ h2{
 /*body*/
 body{
 	margin:0;
-	background: #4BD578; /* For browsers that do not support gradients */
+	background: #292F36; /* For browsers that do not support gradients */
 	/*background: -webkit-linear-gradient(left, #4568DC , #B06AB3); *//* For Safari 5.1 to 6.0 */
 	/*background: -o-linear-gradient(right, #4568DC, #B06AB3);*/ /* For Opera 11.1 to 12.0 */
 	/*background: -moz-linear-gradient(right, #4568DC, #B06AB3);*/ /* For Firefox 3.6 to 15 */
@@ -77,7 +56,6 @@ body{
 	background: url(../images/test.jpeg) no-repeat;
 	margin-left: auto;
 	margin-right: auto;
-	box-shadow: 0 4px #292F36;
 
 }
 
