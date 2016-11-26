@@ -4,8 +4,6 @@
 let canvas = document.createElement('canvas');
 let context = canvas.getContext('2d');
 let img = document.getElementById('main-image');
-
-
 console.log(img);
 
 //context.drawImage(img, 0, 0);
@@ -184,4 +182,11 @@ function getDominantColor(image){
 
 function getDominantPalette(image){
   return colorThief.getPalette(image, 4);
+}
+
+function playSong(url) {
+  var player = document.getElementById('player');
+  player.src = url;
+  player.load();
+  player.play();
 }
