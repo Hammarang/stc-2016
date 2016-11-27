@@ -23,9 +23,6 @@ if (process.env.PORT) {
   client_secret = settings.client_secret;
 }
 
-console.log("Got client id: " + client_id);
-console.log("Got client secret: " + client_secret);
-
 var users = {};
 
 var app = express();
