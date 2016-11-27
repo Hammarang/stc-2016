@@ -1,7 +1,7 @@
 {
   "name": "stc-2016",
   "version": "1.0.0",
-  "description": "",
+  "description": "Spotify Tech Challenge - Team Yellow Heart",
   "main": "server.js",
   "dependencies": {
     "cookie-parser": "^1.4.3",
@@ -21,8 +21,8 @@
   },
   "author": "",
   "license": "ISC",
+  "homepage": "https://github.com/Hammarang/stc-2016#readme",
   "bugs": {
-    "url": ""
-  },
-  "homepage": ""
+    "url": "https://github.com/Hammarang/stc-2016/issues"
+  }
 }

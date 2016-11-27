@@ -1,14 +1,14 @@
 // TODO Move to configuration file.
 var client_id = '68668a9de84c4119bd1874309b142c90'; // Your client id
 var client_secret = 'be46b3d8d6ef4b19b82d2414f239b3d1'; // Your secret
-var redirect_uri = 'http://localhost:8081/callback'; // Your redirect uri
+var redirect_uri = 'https://stc-2016.herokuapp.com/callback'; // Your redirect uri
 
 var request = require('request');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
-var localhost = 'http://localhost:8081/';
+var localhost = 'https://stc-2016.herokuapp.com';
 var access_token;
 var user_image;
 
@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-var server = app.listen(8081, function () {
+var server = app.listen(process.env.PORT || 3000, function () {
   var host = server.address().address
   var port = server.address().port
   console.log("Example app listening at http://%s:%s", host, port)
