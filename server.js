@@ -1,12 +1,5 @@
 var redirect_uri; // Your redirect uri
 var localhost;
-if (process.env.PORT) {
-  redirect_uri = 'https://stc-2016.herokuapp.com/callback';
-  localhost = 'https://stc-2016.herokuapp.com';
-} else {
-  redirect_uri = 'http://localhost:3000/callback';
-  localhost = 'http://localhost:3000';
-}
 
 var request = require('request');
 var express = require('express');
@@ -17,13 +10,17 @@ var stateKey = 'spotify_auth_state';
 var client_id;
 var client_secret;
 
-if (process.env.CLIENT_KEY && process.env.CLIENT_SECRET) {
+if (process.env.PORT) {
+  redirect_uri = 'https://stc-2016.herokuapp.com/callback';
+  localhost = 'https://stc-2016.herokuapp.com';
   client_id = process.env.CLIENT_KEY;
   client_secret = process.env.CLIENT_SECRET;
 } else {
+  redirect_uri = 'http://localhost:3000/callback';
+  localhost = 'http://localhost:3000';
   var settings = JSON.parse(fs.readFileSync('settings.json').toString());
-  client_id = settings.client_id; // Your client id
-  client_secret = settings.client_secret; // Your secret
+  client_id = settings.client_id;
+  client_secret = settings.client_secret;
 }
 
 var users = {};
