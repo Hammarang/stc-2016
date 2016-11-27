@@ -55,7 +55,7 @@ app.get('/user', function(req, res) {
     access_token = req.query.access_token;
     user_name = body.display_name;
     user_image = body.images[0].url;
-    res.redirect('/choice.html');
+    res.redirect('/app.html');
   });
 });
 

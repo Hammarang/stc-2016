@@ -12,38 +12,6 @@
 
   <title>Spotify Tech Challenge - 2016 Demo</title>
 </head>
-<script>
-  window.onload = function() {
-    let gotoPage = window.location.origin + "/user_info";
-
-    fetch(gotoPage)
-      .then(
-        function(response) {
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-              response.status);
-            return;
-          }
-
-          // Examine the text in the response
-          response.json().then(function(data) {
-            console.log(data);
-            document.getElementById("profile_pic").src = data.user_image;
-            document.getElementById("user_name").innerHTML = data.user_name;
-          });
-        }
-      )
-      .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-      });
-
-    var dataImage = localStorage.getItem('imgData');
-    bannerImg = document.getElementById('main-image');
-    bannerImg.src = dataImage;
-    analyzeImageAndPlay(bannerImg);
-  }
-</script>
-
 <body>
 	<div id="header">
 		<div id="title"></div>
@@ -51,8 +19,7 @@
       <img id="profile_pic" />
       <p id="user_name" />
 		</div>
-    <a href="">
-    <a href="choice.html">
+    <a href="index.html">
       <i class="fa fa-arrow-left" aria-hidden="true"></i>
     </a>
     <div id="sign_out_btn"></div>
@@ -98,6 +65,25 @@
 	    	</div>
 	   	</div>
     </div>
+    <div id="img_choice_container">
+   		<div class="img_choice">
+   		</div>
+      <a href="take_picture.html">
+        <div id="instagram_choice">
+          <i class="fa fa-camera" aria-hidden="true"></i>
+        </div>
+      </a>
+      <div id="upload_choice">
+        <i class="fa fa-upload" aria-hidden="true"></i>
+        <input id="upload_file" type="file" name="upload_file">
+      </div>
+
+   		<div id="choice_desc">
+        <!-- <p>Upload an image from your device, or use photos from your instagram account!</p> -->
+   		</div>
+   		<div id="info">
+   		</div>
+    </div>
     <div id="info">
     </div>
   </div>
@@ -109,4 +95,62 @@
 <script src="lib/color-thief.min.js" charset="utf-8"></script>
 <script src="lib/tiny-color.js" charset="utf-8"></script>
 <script src="js/main.js" charset="utf-8"></script>
+<script>
+  window.onload = function() {
+    let gotoPage = window.location.origin + "/user_info";
+
+    fetch(gotoPage)
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            return;
+          }
+
+          // Examine the text in the response
+          response.json().then(function(data) {
+            console.log(data);
+            document.getElementById("profile_pic").src = data.user_image;
+            document.getElementById("user_name").innerHTML = data.user_name;
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+
+    document.getElementById("upload_choice").addEventListener("click", function() {
+      let fileUploader = document.getElementById('upload_file');
+      fileUploader.onchange = function(event) {
+        let fileList = fileUploader.files;
+        if (FileReader && fileList && fileList.length) {
+          var fr = new FileReader();
+          fr.onload = function () {
+            var image = fr.result;
+            if (image !== undefined) {
+              localStorage.setItem("imgData", getBase64Image(image));
+              document.location = window.location.origin + "/app.html";
+            }
+          }
+          fr.readAsDataURL(fileList[0]);
+        }
+      }
+      fileUploader.click();
+    });
+
+    var dataImage = localStorage.getItem('imgData');
+    console.log(dataImage);
+    if (dataImage !== null) {
+      console.log("Dataimage not undefined");
+      bannerImg = document.getElementById('main-image');
+      bannerImg.src = dataImage;
+      analyzeImageAndPlay(bannerImg);
+    } else {
+      console.log("Dataimage undefined");
+      bannerImg = document.getElementById('main-image');
+      bannerImg.src = 'images/upload.png';
+    }
+  }
+</script>
 </html>

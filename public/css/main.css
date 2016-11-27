@@ -157,7 +157,8 @@
     margin-left: 20px;
     width:200px;
     height:200px;
-    margin-top:40px;
+    margin-top:5px;
+    margin-bottom: 200px;
 }
 
 #upload_choice:hover{
@@ -199,7 +200,7 @@ audio{
 }
 
 #img_choice_container{
-  margin-top:80px;
+  margin-top:20px;
 	width:600px;
 	margin-right: auto;
 	margin-left:auto;

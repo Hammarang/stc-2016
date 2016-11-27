@@ -12,11 +12,12 @@
 
   <title>Spotify Tech Challenge - 2016 Demo</title>
 </head>
-<!--<script>
-  $(document).ready(function() {
-      $('#img_container').fadeIn("slow");
-  });
-</script>-->
+<script>
+  window.onload = function () {
+    localStorage.removeItem('imgData');
+    console.log(localStorage.getItem('imgData'));
+  }
+</script>
 
 <body>
 

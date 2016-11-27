@@ -1,43 +1,10 @@
-
-
 // Create canvas containing the test image
 let canvas = document.createElement('canvas');
 let context = canvas.getContext('2d');
 let img = document.getElementById('main-image');
 // console.log(img);
 
-//context.drawImage(img, 0, 0);
-let pixels = getPixels(img, context);
-
 let colorThief = new ColorThief();
-let dominantColor = getDominantColor(img);
-let dominantPalette = getDominantPalette(img);
-
-// console.log("Dominant Color:");
-// console.log(dominantColor);
-// console.log("Dominant Palette:");
-// console.log(dominantPalette);
-
-// Print 10 first pixels
-// console.log(pixels.slice(0, 10));
-
-// Get intensity
-let intensity = getPaletteIntensity(dominantPalette)
-
-// console.log("Intensity of dominant palette")
-// console.log(intensity);
-
-// console.log("Constrast of dominant palette");
-let contrast = getPaletteContrast(dominantPalette);
-// console.log(contrast);
-
-// console.log("Brightness of image");
-let brightness = getBrightness(dominantPalette);
-// console.log(brightness);
-
-// console.log("Saturation of image");
-let saturation = getSaturation(dominantPalette);
-// console.log(saturation);
 
 document.getElementById('like_btn').onclick = function() {
   if(track) {
