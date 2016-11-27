@@ -17,8 +17,7 @@ var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
 
-var access_token;
-var user_image;
+var users = {};
 
 var app = express();
 app.use(express.static(__dirname + '/public'))
@@ -52,17 +51,25 @@ app.get('/user', function(req, res) {
     json: true
   };
   request.get(options, function(error, response, body) {
-    access_token = req.query.access_token;
-    user_name = body.display_name;
-    user_image = body.images[0].url;
-    res.redirect('/app.html');
+    console.log(body);
+    var access_token = req.query.access_token;
+    var user = body.id;
+    console.log(user);
+    users[user] = body;
+    console.log(users);
+    res.redirect('/app.html?token=' + access_token + '&user_id=' + user);
   });
 });
 
 app.get('/user_info', function(req, res) {
+  console.log(req.query);
+  var user = req.query.user_id;
+  var data = users[user];
+  console.log(user);
+  console.log(data);
   res.send({
-    'user_name': user_name,
-    'user_image': user_image
+    'user_name': data.display_name,
+    'user_image': data.images[0].url
   });
 });
 
@@ -178,6 +185,7 @@ app.get('/star', function(req, res) {
 });
 
 app.get('/recommendations', function(req, res) {
+  var token = req.query.token;
   var selectedTrack;
   var topTracksUrl = 'https://api.spotify.com/v1/me/top/tracks?limit=5';
   var topTracksOptions = {
@@ -185,7 +193,7 @@ app.get('/recommendations', function(req, res) {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + access_token
+          'Authorization': 'Bearer ' + token
       }
   };
   var seed = "";
@@ -217,7 +225,7 @@ app.get('/recommendations', function(req, res) {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + access_token
+            'Authorization': 'Bearer ' + token
         }
     };
     var trackIds = [];
@@ -242,7 +250,7 @@ app.get('/recommendations', function(req, res) {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + access_token
+              'Authorization': 'Bearer ' + token
           }
       };
       request.get(trackOptions, function(error, response, body) {

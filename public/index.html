@@ -15,7 +15,10 @@
 <script>
   window.onload = function () {
     localStorage.removeItem('imgData');
-    console.log(localStorage.getItem('imgData'));
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_name");
+    localStorage.removeItem("user_image");
+    localStorage.removeItem("user_id");
   }
 </script>
 

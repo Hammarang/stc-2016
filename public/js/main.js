@@ -18,33 +18,11 @@ document.getElementById('like_btn').onclick = function() {
   }
 }
 
-// Setup file uploading, reanalyzing the image after it is uploaded
-document.getElementById('hashtag_btn').onclick = function() {
-  let fileUploader = document.getElementById('upload_file');
-  fileUploader.onchange = function(event) {
-    let fileList = fileUploader.files;
-
-    if (FileReader && fileList && fileList.length) {
-    var fr = new FileReader();
-    fr.onload = function () {
-        img.src = fr.result;
-        let dominantPalette = getDominantPalette(img);
-        let features = analyzeImage(dominantPalette);
-        setUIPalette(dominantPalette);
-        gotoRecommendation(features.intensity, features.brightness, features.saturation);
-    }
-    fr.readAsDataURL(fileList[0]);
-    }
-  }
-  // Open file uploader
-  fileUploader.click();
-}
-
-function analyzeImageAndPlay(image) {
+function analyzeImageAndPlay(image, token) {
   let dominantPalette = getDominantPalette(image);
   let features = analyzeImage(dominantPalette);
   setUIPalette(dominantPalette);
-  gotoRecommendation(features.intensity, features.brightness, features.saturation);
+  gotoRecommendation(token, features.intensity, features.brightness, features.saturation);
 }
 
 function analyzeImage(dominantPalette) {
@@ -93,7 +71,7 @@ function rgbToHexStr(color) {
 
 var track;
 // Goto the recommendations page with the calculated parameters
-function gotoRecommendation(intensity, brightness, saturation) {
+function gotoRecommendation(token, intensity, brightness, saturation) {
   let valence = intensity;
   let energy = brightness + saturation;
 
@@ -101,8 +79,9 @@ function gotoRecommendation(intensity, brightness, saturation) {
   if (energy > 1) {
     energy = 1;
   }
-  let gotoPage = window.location.origin + "/recommendations";
-  gotoPage += "?valence=" + valence;
+  let gotoPage = window.location.origin + "/recommendations?";
+  gotoPage += "token=" + token;
+  gotoPage += "&valence=" + valence;
   gotoPage += "&energy=" + energy;
   console.log(gotoPage);
 

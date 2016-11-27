@@ -94,31 +94,47 @@
 </body>
 <script src="lib/color-thief.min.js" charset="utf-8"></script>
 <script src="lib/tiny-color.js" charset="utf-8"></script>
+<script src="lib/he.js" charset="utf-8"></script>
 <script src="js/main.js" charset="utf-8"></script>
 <script>
   window.onload = function() {
-    let gotoPage = window.location.origin + "/user_info";
+    var url = window.location.search.substr(1);
+    if (url !== undefined && url.length > 1) {
+      console.log(url);
+      var params = url.split('&');
+      console.log(params);
+      var token = params[0].split('=')[1];
+      var user_id = params[1].split('=')[1];
+      console.log(token);
+      console.log(user_id);
+      localStorage.setItem("token", token);
+      localStorage.setItem("user_id", user_id);
 
-    fetch(gotoPage)
-      .then(
-        function(response) {
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-              response.status);
-            return;
+      let gotoPage = window.location.origin + "/user_info?user_id=" + user_id;
+      fetch(gotoPage)
+        .then(
+          function(response) {
+            if (response.status !== 200) {
+              console.log('Looks like there was a problem. Status Code: ' + response.status);
+              return;
+            }
+
+            // Examine the text in the response
+            response.json().then(function(data) {
+              console.log(data);
+              localStorage.setItem("user_image", data.user_image);
+              localStorage.setItem("user_name", data.user_name);
+              document.getElementById("profile_pic").src = data.user_image;
+              document.getElementById("user_name").innerHTML = data.user_name;
+            });
           }
-
-          // Examine the text in the response
-          response.json().then(function(data) {
-            console.log(data);
-            document.getElementById("profile_pic").src = data.user_image;
-            document.getElementById("user_name").innerHTML = data.user_name;
-          });
-        }
-      )
-      .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-      });
+        )
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        });
+    }
+    document.getElementById("profile_pic").src = localStorage.getItem('user_image');
+    document.getElementById("user_name").innerHTML = localStorage.getItem('user_name');
 
     document.getElementById("upload_choice").addEventListener("click", function() {
       let fileUploader = document.getElementById('upload_file');
@@ -145,7 +161,7 @@
       console.log("Dataimage not undefined");
       bannerImg = document.getElementById('main-image');
       bannerImg.src = dataImage;
-      analyzeImageAndPlay(bannerImg);
+      analyzeImageAndPlay(bannerImg, localStorage.getItem('token'));
     } else {
       console.log("Dataimage undefined");
       bannerImg = document.getElementById('main-image');
