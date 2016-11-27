@@ -5,6 +5,7 @@ reated by https://www.gitignore.io/api/node,vim,sublimetext,macos
 logs
 *.log
 npm-debug.log*
+settings.json
 
 # Runtime data
 pids
@@ -117,4 +118,3 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-
