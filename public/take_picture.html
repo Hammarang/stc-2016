@@ -3,6 +3,11 @@
 <head>
   <script src="lib/color-thief.min.js" charset="utf-8"></script>
   <script src="js/main.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/main.css" media="screen" title="no title">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js">
+  </script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Ranga|Roboto|Tillana" rel="stylesheet">
 </head>
 <script>
   window.onload = function() {
@@ -34,8 +39,14 @@
   }
 </script>
 <body>
+
+<div id="vid">
   <video id="video" width="640" height="480" autoplay></video>
-  <button id="snap">Snap Photo</button>
+  <div id="snap_btn">
+    <button id="snap">SNAP PHOTO</button>
+  </div>
   <canvas id="canvas" width="640" height="480"></canvas>
+</div>
+
 </body>
 </html>

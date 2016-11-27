@@ -1,3 +1,12 @@
+/*Video*/
+#vid{
+  margin-right:auto;
+  margin-left:auto;
+  overflow:hidden;
+  width:640px;
+  padding-top:40px;
+}
+
 /*Colours*/
 #left_colour{
     width: 70px;
@@ -57,6 +66,41 @@
     font-size: 14px;
     border-radius:30px;
     font-weight: bold;
+}
+
+#snap:hover {
+  background: #FDFFFC;
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+  background-image: linear-gradient(top, #fff, #f4f1ee);
+  color:#292F36;
+}
+
+#snap{
+    transition: all 0.3s ease 0s;
+    background-color: #292F36; /* Green */
+    border: none;
+    color:#FDFFFC;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    /*float:right;*/
+    border-radius:30px;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #FDFFFC;
+    margin-bottom:40px;
+    font-family: 'Roboto', sans-serif;
+    width:200px;
+}
+
+#snap_btn{
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    padding: 20px;
 }
 
 #like_btn:hover {
