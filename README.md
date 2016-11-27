@@ -6,6 +6,4 @@ The purpose of the app is to do a POC for selecting music from a picture. The im
 Mobile is currently not supported. 
 
 # Running the app
-The backend requires Node to run. 
-Running locally also requires a settings.json file with the `client_id` and `client_secret` specified.
-`npm install` & `npm start`
+The backend requires Node to run. A settings.json file with the `client_id` and `client_secret` specified is also required. Then running the app is done by: `npm install` & `npm start`
