@@ -156,14 +156,11 @@
     });
 
     var dataImage = localStorage.getItem('imgData');
-    console.log(dataImage);
     if (dataImage !== null) {
-      console.log("Dataimage not undefined");
       bannerImg = document.getElementById('main-image');
       bannerImg.src = dataImage;
       analyzeImageAndPlay(bannerImg, localStorage.getItem('token'));
     } else {
-      console.log("Dataimage undefined");
       bannerImg = document.getElementById('main-image');
       bannerImg.src = 'images/upload.png';
     }

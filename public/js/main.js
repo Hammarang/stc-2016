@@ -64,7 +64,6 @@ function componentToHex(c) {
 }
 
 function rgbToHexStr(color) {
-  console.log(color);
   return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
 }
 
@@ -83,7 +82,6 @@ function gotoRecommendation(token, intensity, brightness, saturation) {
   gotoPage += "token=" + token;
   gotoPage += "&valence=" + valence;
   gotoPage += "&energy=" + energy;
-  console.log(gotoPage);
 
   fetch(gotoPage)
     .then(
@@ -96,7 +94,6 @@ function gotoRecommendation(token, intensity, brightness, saturation) {
 
         // Examine the text in the response
         response.json().then(function(data) {
-          console.log(data);
           document.getElementById("thumb").src = data.image;
           document.getElementById("song").innerHTML = data.artist + ' - ' + data.name;
           playSong(data.preview);

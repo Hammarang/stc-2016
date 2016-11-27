@@ -51,22 +51,16 @@ app.get('/user', function(req, res) {
     json: true
   };
   request.get(options, function(error, response, body) {
-    console.log(body);
     var access_token = req.query.access_token;
     var user = body.id;
-    console.log(user);
     users[user] = body;
-    console.log(users);
     res.redirect('/app.html?token=' + access_token + '&user_id=' + user);
   });
 });
 
 app.get('/user_info', function(req, res) {
-  console.log(req.query);
   var user = req.query.user_id;
   var data = users[user];
-  console.log(user);
-  console.log(data);
   res.send({
     'user_name': data.display_name,
     'user_image': data.images[0].url
