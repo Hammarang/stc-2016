@@ -1,6 +1,3 @@
-// TODO Move to configuration file.
-var client_id = '68668a9de84c4119bd1874309b142c90'; // Your client id
-var client_secret = 'be46b3d8d6ef4b19b82d2414f239b3d1'; // Your secret
 var redirect_uri; // Your redirect uri
 var localhost;
 if (process.env.PORT) {
@@ -13,9 +10,14 @@ if (process.env.PORT) {
 
 var request = require('request');
 var express = require('express');
+var fs = require('fs');
 var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
+
+var settings = JSON.parse(fs.readFileSync('settings.json').toString());
+var client_id = settings.client_id; // Your client id
+var client_secret = settings.client_secret; // Your secret
 
 var users = {};
 
