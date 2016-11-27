@@ -205,7 +205,7 @@
     margin-bottom: 200px;
 }
 
-#upload_choice:hover{
+#upload_choice:hover, #instagram_choice:hover{
   background: #FC354C;
   background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
   background-image: linear-gradient(top, #fff, #f4f1ee);
