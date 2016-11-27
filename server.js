@@ -14,10 +14,17 @@ var fs = require('fs');
 var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
+var client_id;
+var client_secret;
 
-var settings = JSON.parse(fs.readFileSync('settings.json').toString());
-var client_id = settings.client_id; // Your client id
-var client_secret = settings.client_secret; // Your secret
+if (process.env.CLIENT_KEY && process.env.CLIENT_SECRET) {
+  client_id = process.env.CLIENT_KEY;
+  client_secret = process.env.CLIENT_SECRET;
+} else {
+  var settings = JSON.parse(fs.readFileSync('settings.json').toString());
+  client_id = settings.client_id; // Your client id
+  client_secret = settings.client_secret; // Your secret
+}
 
 var users = {};
 
