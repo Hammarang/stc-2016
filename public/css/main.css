@@ -23,6 +23,7 @@
 }
 
 #left_hex{
+    text-transform: uppercase;
     font-weight:bold;
     font-size: 10px;
     color: #FDFFFC;
@@ -32,6 +33,7 @@
 }
 
 #right_hex{
+    text-transform: uppercase;
     font-weight:bold;
     font-size: 10px;
     color: #FDFFFC;
@@ -177,7 +179,7 @@
 }
 
 #main-image{
-  width:700px;    
+  width:700px;
 }
 
 #instagram_choice, #upload_choice{
