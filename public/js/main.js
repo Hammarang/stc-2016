@@ -39,8 +39,6 @@ let brightness = getBrightness(dominantPalette);
 let saturation = getSaturation(dominantPalette);
 // console.log(saturation);
 
-gotoRecommendation(intensity, brightness, saturation);
-
 document.getElementById('like_btn').onclick = function() {
   if(track) {
     let starPush = window.location.origin + "/star";
@@ -73,6 +71,13 @@ document.getElementById('hashtag_btn').onclick = function() {
   }
   // Open file uploader
   fileUploader.click();
+}
+
+function analyzeImageAndPlay(image) {
+  let dominantPalette = getDominantPalette(image);
+  let features = analyzeImage(dominantPalette);
+  setUIPalette(dominantPalette);
+  gotoRecommendation(features.intensity, features.brightness, features.saturation);
 }
 
 function analyzeImage(dominantPalette) {
@@ -239,4 +244,13 @@ function playSong(url) {
   player.src = url;
   player.load();
   player.play();
+}
+
+function convertCanvasToImage(canvas) {
+  var image = canvas.toDataURL("image/png");
+  return image;
+}
+
+function getBase64Image(image) {
+    return image.replace(/^data:image\/(png|jpg);base64,/, "");
 }

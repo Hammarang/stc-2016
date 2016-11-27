@@ -14,28 +14,33 @@
 </head>
 <script>
   window.onload = function() {
-      let gotoPage = window.location.origin + "/user_info";
+    let gotoPage = window.location.origin + "/user_info";
 
-      fetch(gotoPage)
-        .then(
-          function(response) {
-            if (response.status !== 200) {
-              console.log('Looks like there was a problem. Status Code: ' +
-                response.status);
-              return;
-            }
-
-            // Examine the text in the response
-            response.json().then(function(data) {
-              console.log(data);
-              document.getElementById("profile_pic").src = data.user_image;
-              document.getElementById("user_name").innerHTML = data.user_name;
-            });
+    fetch(gotoPage)
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            return;
           }
-        )
-        .catch(function(err) {
-          console.log('Fetch Error :-S', err);
-        });
+
+          // Examine the text in the response
+          response.json().then(function(data) {
+            console.log(data);
+            document.getElementById("profile_pic").src = data.user_image;
+            document.getElementById("user_name").innerHTML = data.user_name;
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+
+    var dataImage = localStorage.getItem('imgData');
+    bannerImg = document.getElementById('main-image');
+    bannerImg.src = dataImage;
+    analyzeImageAndPlay(bannerImg);
   }
 </script>
 
@@ -70,7 +75,6 @@
    			<button id="hashtag_btn">UPLOAD
           <i class="fa fa-upload" aria-hidden="true"></i>
         </button>
-        <input id="upload_file" type="file" name="upload_file">
    		</div>
    		<div id="info">
    		</div>
@@ -94,7 +98,7 @@
     <div id="info">
     </div>
   </div>
-  
+
 </div>
 </div>
 

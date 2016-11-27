@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+  <script src="lib/color-thief.min.js" charset="utf-8"></script>
+  <script src="js/main.js" charset="utf-8"></script>
+</head>
 <script>
-  // Grab elements, create settings, etc.
-  var video = document.getElementById('video');
-  console.log(video);
+  window.onload = function() {
+    var video = document.getElementById('video');
+    console.log(video);
 
-  // Get access to the camera!
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      // Not adding `{ audio: true }` since we only want video now
-      navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-        console.log(stream);
-        console.log(video);
-        video.src = window.URL.createObjectURL(stream);
-        video.play();
-      });
-  }
-  // Elements for taking the snapshot
-  var canvas = document.getElementById('canvas');
-  var context = canvas.getContext('2d');
-  var video = document.getElementById('video');
+    // Get access to the camera!
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+          console.log(stream);
+          console.log(video);
+          video.src = window.URL.createObjectURL(stream);
+          video.play();
+        });
+    }
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
 
-  // Trigger photo take
-  document.getElementById("snap").addEventListener("click", function() {
-  	context.drawImage(video, 0, 0, 640, 480);
-  });
+    console.log(localStorage);
 
-  // Converts canvas to an image
-  function convertCanvasToImage(canvas) {
-  	var image = new Image();
-  	image.src = canvas.toDataURL("image/png");
-  	return image;
+    document.getElementById("snap").addEventListener("click", function() {
+    	context.drawImage(video, 0, 0, 640, 480);
+      var image = convertCanvasToImage(canvas);
+      localStorage.setItem("imgData", "data:image/png;base64," + getBase64Image(image));
+      document.location = window.location.origin + "/app.html";
+    });
   }
 </script>
 <body>

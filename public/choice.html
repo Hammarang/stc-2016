@@ -35,6 +35,25 @@
         .catch(function(err) {
           console.log('Fetch Error :-S', err);
         });
+
+    document.getElementById("upload_choice").addEventListener("click", function() {
+      let fileUploader = document.getElementById('upload_file');
+      fileUploader.onchange = function(event) {
+        let fileList = fileUploader.files;
+        if (FileReader && fileList && fileList.length) {
+          var fr = new FileReader();
+          fr.onload = function () {
+            var image = fr.result;
+            if (image !== undefined) {
+              localStorage.setItem("imgData", getBase64Image(image));
+              document.location = window.location.origin + "/app.html";
+            }
+          }
+          fr.readAsDataURL(fileList[0]);
+        }
+      }
+      fileUploader.click();
+    });
   }
 </script>
 <body>
@@ -58,11 +77,10 @@
           <i class="fa fa-instagram" aria-hidden="true"></i>
         </div>
       </a>
-      <a href="app.html">
-        <div id="upload_choice">
-          <i class="fa fa-upload" aria-hidden="true"></i>
-        </div>
-      </a>
+      <div id="upload_choice">
+        <i class="fa fa-upload" aria-hidden="true"></i>
+        <input id="upload_file" type="file" name="upload_file">
+      </div>
 
    		<div id="choice_desc">
         <!-- <p>Upload an image from your device, or use photos from your instagram account!</p> -->

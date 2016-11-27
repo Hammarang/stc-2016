@@ -1,14 +1,22 @@
 // TODO Move to configuration file.
 var client_id = '68668a9de84c4119bd1874309b142c90'; // Your client id
 var client_secret = 'be46b3d8d6ef4b19b82d2414f239b3d1'; // Your secret
-var redirect_uri = 'https://stc-2016.herokuapp.com/callback'; // Your redirect uri
+var redirect_uri; // Your redirect uri
+var localhost;
+if (process.env.PORT) {
+  redirect_uri = 'https://stc-2016.herokuapp.com/callback';
+  localhost = 'https://stc-2016.herokuapp.com';
+} else {
+  redirect_uri = 'http://localhost:3000/callback';
+  localhost = 'http://localhost:3000';
+}
 
 var request = require('request');
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var querystring = require('querystring');
 var stateKey = 'spotify_auth_state';
-var localhost = 'https://stc-2016.herokuapp.com';
+
 var access_token;
 var user_image;
 
