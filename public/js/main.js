@@ -96,10 +96,26 @@ function setUIPalette(palette) {
         + "to right" + ', ' + firstDominant + ', ' + secondDominant + ')';
   document.body.style.backgroundImage = '-o-linear-gradient('
         + "right" + ', ' + firstDominant + ', ' + secondDominant + ')';
+
+  document.getElementById("left_colour").style.background = firstDominant;
+  document.getElementById("right_colour").style.background = secondDominant;
+
+  document.getElementById("left_hex").innerHTML = rgbToHexStr(palette[0]);
+  document.getElementById("right_hex").innerHTML = rgbToHexStr(palette[1]);
 }
 
 function rgbToStr(color) {
   return "rgb(" + color[0] + "," + color[1] + "," + color[2] + ")";
+}
+
+function componentToHex(c) {
+  let hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHexStr(color) {
+  console.log(color);
+  return "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
 }
 
 
