@@ -82,9 +82,11 @@
 	margin-top:40px;
 	font-family: sans-serif;
   text-align: center;
+  margin-bottom: 80px;
 }
 
 #instagram_choice, #upload_choice{
+    transition: all 0.3s ease 0s;
     background-color: #292F36; /* Green */
     border: none;
     color:#FDFFFC;
@@ -103,6 +105,13 @@
     width:200px;
     height:200px; 
     margin-top:40px;  
+}
+
+#upload_choice:hover{
+  background: #FC354C;
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+  background-image: linear-gradient(top, #fff, #f4f1ee);
+  color:#FC354C;
 }
 
 #instagram_choice{
@@ -137,7 +146,7 @@ audio{
 }
 
 #img_choice_container{
-  margin-top:120px;
+  margin-top:80px;
 	width:600px;
 	margin-right: auto;
 	margin-left:auto;
@@ -175,6 +184,7 @@ h2{
 	margin:10px;
   line-height: 2.6;
   font-size: 20px;
+  float: left;
 }
 
 #welcome{
@@ -232,14 +242,14 @@ html, body {height: 100%;}
 }*/
 
 #profile_pic{
-	width: 50px;
-	height: 50px;
-	border-radius: 25px;
-	-webkit-border-radius: 25px;
-	-moz-border-radius: 25px;
+	width: 90px;
+	height: 90px;
+	border-radius: 45px;
+	-webkit-border-radius: 45px;
+	-moz-border-radius: 45px;
 	background: url(../images/profile_img.png) no-repeat;
 	float:right;
-	margin:10px;
+	margin:20px;
 }
 
 #spotify_logo{
@@ -267,6 +277,16 @@ html, body {height: 100%;}
 #title h1{
 	/*text-align: left;*/
   text-align: center;
+}
+
+#user_name{
+    float: right;
+    line-height: 6.3;
+    color: #FDFFFC;
+    padding-right:10px;
+    /* margin-bottom: 40px; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 /*Song bar*/
