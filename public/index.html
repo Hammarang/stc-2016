@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/main.css" media="screen" title="no title">
-
+  <link rel="stylesheet" href="css/login.css" media="screen" title="no title">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js">
+  </script>
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lobster|Ranga|Roboto|Tillana" rel="stylesheet">
-  <script src="https://use.fontawesome.com/e85b70dd82.js"></script>
 
   <title>Spotify Tech Challenge - 2016 Demo</title>
 </head>
+<<<<<<< HEAD
 <script>
   window.onload = function() {
       let gotoPage = window.location.origin + "/user_info";
@@ -55,54 +56,36 @@
   </div>
 
     </div>
+=======
 
-    <div id="like">
-     <button id="like_btn"><i class="fa fa-heart" aria-hidden="true"></i></button>
+<!--<script>
+  $(document).ready(function() {
+      $('#img_container').fadeIn("slow");
+  });
+</script>-->
+
+<body>
+
+<div id="img_container">
+      <div class="img">
+        <img src="images/uni.jpg"></img>
+      </div>
+</div>
+>>>>>>> 7104e61f65805dc552537a4292c5e5b22e143468
+
+	<div id="title">
+  		<h1>Welcome to Zen!</h1>
     </div>
 
-    </br>
-    </br>
-
-    <div id="title">
-      <h1 id="song"></h1>
-    <div id="img_container">
-   		<div class="img">
-        <img id="main-image" src="images/uni.jpg"></img>
-   		</div>
-   		<div id="img_btns">
-   			<button id="hashtag_btn">UPLOAD
-          <i class="fa fa-upload" aria-hidden="true"></i>
-        </button>
-        <input id="upload_file" type="file" name="upload_file">
+    <div id="login_container">
+   		<div id="login_btns">
+      <a href="/login">
+   			<button id="login_btn">Log in with Spotify</button>
+      <a>
    		</div>
    		<div id="info">
    		</div>
     </div>
 
-    <div id="song_bar">
-	    <div id="spotify_container">
-	    	<div id="spotify_logo">
-	    		<img src="images/spotify_logo.png"></img>
-	    	</div>
-        <div id="thumb_pic">
-          <img id="thumb"/>
-        </div>
-	    	<div id="song">
-          <audio id="player" controls>
-            <source src="From Json" type="audio/mpeg" />
-          </audio>
-	    	</div>
-	   	</div>
-    </div>
-    <div id="info">
-    </div>
-  </div>
-  
-</div>
-</div>
-
 </body>
-<script src="lib/color-thief.min.js" charset="utf-8"></script>
-<script src="lib/tiny-color.js" charset="utf-8"></script>
-<script src="js/main.js" charset="utf-8"></script>
 </html>
