@@ -12,3 +12,6 @@ Mobile is currently not supported.
 
 ## Running the app
 The backend requires Node to run. A settings.json file with the `client_id` and `client_secret` specified is also required. Then running the app is done by: `npm install` & `npm start`
+
+## Demo
+A demo of the application is running at https://stc-2016.herokuapp.com
