@@ -13,6 +13,7 @@
 }
 
 #login_btns{
+	transition: all 0.3s ease 0s;
 	overflow: hidden;
 	margin-right: auto;
 	margin-left: auto;
@@ -20,6 +21,14 @@
 	margin-top:10px;
 	font-family: sans-serif;
 	transition: all 0.3s ease 0s;
+}
+
+
+#login_btn:hover {
+  background: #FC354C;
+  background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+  background-image: linear-gradient(top, #fff, #f4f1ee);
+  color:#FC354C;
 }
 
 /*Headers*/
